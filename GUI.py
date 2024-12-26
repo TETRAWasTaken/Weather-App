@@ -13,7 +13,7 @@ class WeatherApp(wx.Frame):
         font2 = wx.Font(25, wx.DEFAULT, wx.NORMAL, wx.BOLD, False, 'Arial')
         font3 = wx.Font(30, wx.DEFAULT, wx.NORMAL, wx.BOLD, False, 'Arial')
 
-        bmp = wx.Bitmap("/Users/anshumaansoni/Downloads/ruslan-sikunov-1GnIsmo48bM-unsplash.jpg",wx.BITMAP_TYPE_ANY)
+        bmp = wx.Bitmap("Homepage.jpg",wx.BITMAP_TYPE_ANY)  #add image file from path
         img = bmp.ConvertToImage()
         img = img.Scale(1228,816, wx.IMAGE_QUALITY_HIGH)
         bmp = wx.Bitmap(img)
@@ -67,7 +67,7 @@ class WeatherApp(wx.Frame):
 
     def get_weather(self, event):
         city = self.city_text.GetValue()
-        api_key = "18a656c2bab7188174d73f2d0900357b"  # Replace with your OpenWeatherMap API key
+        api_key = "API KEY"  # Replace with your OpenWeatherMap API key
         url = f"http://api.openweathermap.org/data/2.5/weather?q={city}&appid={api_key}&units=metric"
 
         try:
@@ -80,19 +80,20 @@ class WeatherApp(wx.Frame):
             wind_speed = data['wind']['speed']
             weather_desc = data['weather'][0]['description']
 
-            bmp2 = self.textimage("Humidity",f"{humidity}%", "/Users/anshumaansoni/Downloads/randy-laybourne-Y9awChpvLRo-unsplash.jpg",
+            bmp2 = self.textimage("Humidity",f"{humidity}%", "Humidity Page.jpg",  #add image file from path
                                   (400, 300), (440,470), color=(255,255,255), resize=(1228,816), scale1=2, scale2=7)
             img = bmp2.ConvertToImage()
             img = img.Scale(614, 408, wx.IMAGE_QUALITY_HIGH)
             self.Background_bitmap2 = wx.StaticBitmap(self, -1, img, (614, 408))
 
-            bmp2 = self.textimage("Temp",f'{str(temp)} C', "/Users/anshumaansoni/Downloads/michael-behrens-48qa_84IvPY-unsplash.jpg",
+            bmp2 = self.textimage("Temp",f'{str(temp)} C', "Temperature Page.jpg",  #add image file from path
                                   (380, 320), (360,500), color=(255,255,255), resize=(1228,816), scale1=2, scale2=7)
             img = bmp2.ConvertToImage()
             img = img.Scale(614, 408, wx.IMAGE_QUALITY_HIGH)
             self.Background_bitmap2 = wx.StaticBitmap(self, -1, img, (0, 408))
 
-            bmp2 = self.textimage("Wind",f"{str(wind_speed)} m/s", "/Users/anshumaansoni/Downloads/jason-mavrommatis-9HEY1URQIQY-unsplash.jpg",
+            bmp2 = self.textimage("Wind",f"{str(wind_speed)} m/s", "Wind Page
+            .jpg",  #add image file from path
                                   (240, 300), (200,470), color=(90,90,90), resize=(1228,816), scale1=2, scale2=6)
             img = bmp2.ConvertToImage()
             img = img.Scale(614, 408, wx.IMAGE_QUALITY_HIGH)
@@ -101,7 +102,7 @@ class WeatherApp(wx.Frame):
             if len(weather_desc.split())>1:
                 a,b=weather_desc.split()
                 bmp2 = self.textimage(a, b,
-                                      "/Users/anshumaansoni/Downloads/weatherimage.jpg",
+                                      "/Users/anshumaansoni/Downloads/weather page.jpg",  #add image file from path
                                       (220, 290), (230, 380), color=(255, 255, 255), resize=(1228, 656), scale1=6, scale2=4)
                 img = bmp2.ConvertToImage()
                 img = img.Scale(614, 328, wx.IMAGE_QUALITY_HIGH)
@@ -109,7 +110,7 @@ class WeatherApp(wx.Frame):
 
             else:
                 bmp2 = self.textimage("", weather_desc,
-                                      "/Users/anshumaansoni/Downloads/weatherimage.jpg",
+                                      "/Users/anshumaansoni/Downloads/weather page.jpg",  #add image file from path
                                       (110, 130), (260, 380), color=(255, 255, 255), resize=(1228, 656), scale1=1, scale2=7)
                 img = bmp2.ConvertToImage()
                 img = img.Scale(614, 328, wx.IMAGE_QUALITY_HIGH)
